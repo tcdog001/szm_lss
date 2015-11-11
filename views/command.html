@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+  	<head>
+    	<title>下发命令 - LTE防盗系统</title>
+		<link rel="shortcut icon" />
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    	<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/static/css/color.css">
+      </style>
+	</head>
+
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<a class="navbar-brand">Autelan</a>
+				<div>
+					<ul class="nav navbar-nav">
+						<li><a href="/home">首页</a></li>
+						<li><a href="/noregister">未注册设备</a></li>
+						<li><a href="/import">导入设备</a></li>
+						<li><a href="/report">上报记录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container" style="width:500px ;padding-top: 15%" >
+			<form method="Post" action="/command?mac={{.Mac}}&CurUser={{.CurUser}}">
+			  	<div class="form-group">
+			    		<label>输入命令</label>
+					<textarea id="commandContent" name="commandContent" style="width:485px;height:310px;"></textarea>
+				 </div>
+
+				<div class="form-group">
+			 		<button type="submit" class="btn btn-default" onclick="return CheckInput();">发送命令</button>
+					<script type="text/javascript">
+				      		function CheckInput() {
+				      			var commandContent = document.getElementById("commandContent");
+				      			if (commandContent.value.length == 0) {
+				      				alert("请输入操作命令");
+				      				return false;
+				      			}
+							return true;
+				      		}
+			      		</script>
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html>
